@@ -68,13 +68,13 @@
 
         <div class="content">
             <h3> my name is <span> ODJO Wohou Iyéwolé </span> </h3>
-            <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad debitis, dolorem omnis dolorum non provident distinctio inventore culpa in, nam eligendi quos modi vel aliquid blanditiis velit natus voluptatem deleniti.</p>
+            <p class="info">Je suis un étudiant dynamique et motivé, ayant récemment complété ma licence en génie logiciel. J'ai acquis une solide formation technique et je maîtrise plusieurs langages de programmation, tels que Java, Python et JavaScript, ce qui me permet de développer des applications robustes et innovantes. Grâce à ma compréhension des principes de l'ingénierie logicielle et ma familiarité avec les méthodologies agiles, comme Scrum et Kanban, je suis bien préparé à gérer des projets en équipe..</p>
             <div class="box-container">
                 <div class="box">
-                    <p> <span> age: </span> 19 </p>
+                    <p> <span> age: </span> 20 </p>
                     <p> <span> sexe: </span> masculin </p>
-                    <p> <span> experience  : </span> 2ieme année en informatique </p>
-                    <p> <span> freelance : </span>  indisponible pour le moment </p>
+                    <p> <span> experience  : </span> Fin parcours Licence informatique </p>
+                    <p> <span> freelance : </span>  Disponible </p>
                 </div>
                 <div class="box">
                     <p> <span> langues : </span> français / anglais </p>
@@ -96,44 +96,44 @@
 
 <section class="services" id="services">
 
-    <h1 class="heading"> <span> my </span> services </h1>
+    <h1 class="heading"> <span> mes </span> services </h1>
 
     <div class="box-container">
 
         <div class="box tilt">
             <i class="fas fa-code"></i>
-            <h3>web development</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, quidem.</p>
+            <h3>Développement Web</h3>
+            <p>Je propose un service de développement web sur mesure, conçu pour répondre aux besoins spécifiques de chaque client.</p>
         </div>
 
         <div class="box tilt">
             <i class="fas fa-paint-brush"></i>
-            <h3>graphic design</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, quidem.</p>
+            <h3>Conception Graphique</h3>
+            <p>Je propose également des services de conception graphique pour aider les entreprises à mettre en valeur leurs produits et services.</p>
         </div>
 
         <div class="box tilt">
             <i class="fas fa-bullhorn"></i>
             <h3>seo marketing</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, quidem.</p>
+            <p>Je propose des services de SEO et de marketing digital sur mesure pour aider les entreprises à améliorer leur visibilité en ligne et à attirer un trafic qualifié.</p>
         </div>
 
         <div class="box tilt">
             <i class="fas fa-desktop"></i>
             <h3>maintenance informatique</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, quidem.</p>
+            <p>Je propose un service complet de maintenance informatique, conçu pour assurer le bon fonctionnement de vos systèmes et la sécurité de vos données.</p>
         </div>
 
         <div class="box tilt">
             <i class="fas fa-mobile"></i>
             <h3>Responsive designs</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, quidem.</p>
+            <p>Je propose un service de responsive design qui garantit que votre site web offre une expérience utilisateur optimale, quel que soit l’appareil utilisé.</p>
         </div>
 
         <div class="box tilt">
-            <i class="fab fa-bootstrap"></i>
-            <h3>bootstrap</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, quidem.</p>
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Formation informatique</h3>
+            <p>Je propose des séances d’initiation en informatique spécialement conçues pour les débutants souhaitant se familiariser avec le monde numérique.</p>
         </div>
 
     </div>
@@ -320,6 +320,48 @@ VanillaTilt.init(document.querySelectorAll('.tilt'),{
     max:25
 });
 
+</script>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Empêche le rechargement de la page
+      alert('Merci pour votre message ! Nous vous contacterons sous peu.');
+
+      // Récupérer les valeurs des champs du formulaire
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var subject = document.getElementById('subject').value;
+      var message = document.getElementById('message').value;
+
+      // préparation des données à envoyer
+      const data = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
+      };
+
+      // envoi des données à un service d'envoi d'email
+      fetch('https://formspree.io/f/mwpkqoqa', {
+        method: 'POST',
+        headers: {
+            'Aceept': 'application/json',
+            'content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+            document.getElementById('responseMessage').innerText = 'Votre méssage a été envoyé avec succès !'
+            document.getElementById('contactForm').reset();
+        } else {
+            document.getElementById('responseMessage').innerText = 'Une erreur s’est produite lors de l’envoi de votre message. Veuillez recommencer.';
+        }
+      })
+      .catch(error => {
+        document.getElementById('responseMessage').innerText = 'Une erreur s’est produite lors de l’envoi de votre message. Veuillez recommencer.';
+        console.error('Erreur:', error);
+      });
+    });
 </script>
 
 </body>
